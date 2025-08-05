@@ -26,7 +26,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
   }
 
   return (
-    <div className="min-h-screen container mx-auto">
+    <div className="min-h-screen container mx-auto px-4 sm:px-6 lg:px-8 pb-16">
       <Header />
       
       <article className="px-4 mt-8">
