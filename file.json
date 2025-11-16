@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Getting Started with Next.js 15",
+    "slug": "getting-started-nextjs-15",
+    "excerpt": "A beginner-friendly guide to building apps with Next.js 15.",
+    "content": "Next.js 15 brings new features for React developers. In this article, we'll cover setup, routing, and deployment.",
+    "tags": ["Next.js", "JavaScript", "Frontend"],
+    "featuredImage": "https://example.com/images/nextjs15.png",
+    "isPublished": true
+  },
+  {
+    "title": "Mastering Tailwind CSS in 2025",
+    "slug": "mastering-tailwind-css-2025",
+    "excerpt": "A comprehensive guide to using Tailwind CSS for rapid UI development.",
+    "content": "Tailwind CSS continues to be a top choice for building modern UIs. We'll cover tips, tricks, and advanced patterns.",
+    "tags": ["TailwindCSS", "CSS", "UI"],
+    "featuredImage": "https://example.com/images/tailwind2025.png",
+    "isPublished": true
+  },
+  {
+    "title": "Understanding TypeScript Generics",
+    "slug": "typescript-generics-explained",
+    "excerpt": "Demystifying TypeScript generics with simple examples.",
+    "content": "Generics in TypeScript allow you to create reusable components and maintain strong typing. Let's explore step-by-step.",
+    "tags": ["TypeScript", "Programming"],
+    "featuredImage": "https://example.com/images/typescript-generics.png",
+    "isPublished": false
+  },
+  {
+    "title": "Deploying Full-Stack Apps with Vercel",
+    "slug": "deploy-fullstack-vercel",
+    "excerpt": "Learn how to deploy your Next.js and Node.js apps with Vercel easily.",
+    "content": "Vercel makes full-stack deployments seamless. We'll guide you through connecting your repo, setting environment variables, and deploying.",
+    "tags": ["Vercel", "DevOps", "Deployment"],
+    "featuredImage": "https://example.com/images/vercel.png",
+    "isPublished": true
+  },
+  {
+    "title": "Top 10 VSCode Extensions for Developers",
+    "slug": "vscode-extensions-2025",
+    "excerpt": "Boost your productivity with these must-have VSCode extensions in 2025.",
+    "content": "VSCode remains the most popular editor for developers. Here's our curated list of 10 powerful extensions.",
+    "tags": ["VSCode", "Productivity", "Tools"],
+    "featuredImage": "https://example.com/images/vscode-extensions.png",
+    "isPublished": true
+  }
+]

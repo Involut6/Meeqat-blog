@@ -2,11 +2,14 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { articles, categories } from '@/lib/data';
+import { categories } from '@/lib/data';
 import { Facebook, Instagram, Linkedin, Music, Twitter } from "lucide-react";
+import { usePosts } from '@/hooks/usePosts';
+import Hero from '@/app/assets/hero.svg'
 
 export default function Sidebar() {
-  const latestPosts = articles.slice(1, 5);
+    const {data} = usePosts()
+  const latestPosts = data?.items.slice(0, 5)
 
   return (
     <aside className="space-y-8">
@@ -14,12 +17,12 @@ export default function Sidebar() {
       <div className="">
         <h3 className="text-xl font-bold text-gray-900 mb-6">Latest Post</h3>
         <div className="space-y-4">
-          {latestPosts.map((article) => (
+          {latestPosts?.map((article: any) => (
             <Link key={article.id} href={`/articles/${article.id}`}>
               <div className="flex space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group">
                 <Image
-                  src={article.image}
-                  alt={article.title}
+                  src={Hero}
+                  alt={article.slug}
                   width={60}
                   height={60}
                   className="rounded-lg object-cover"
@@ -28,7 +31,7 @@ export default function Sidebar() {
                   <h4 className="font-medium text-gray-900 text-sm group-hover:text-[#FF9F43] transition-colors line-clamp-2">
                     {article.title}
                   </h4>
-                  <p className="text-xs text-gray-500 mt-1">{article.author.date}</p>
+                  <p className="text-xs text-gray-500 mt-1">{article.createdAt}</p>
                 </div>
               </div>
             </Link>

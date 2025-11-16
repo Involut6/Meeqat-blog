@@ -1,13 +1,18 @@
+'use client'
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ArticleCard from '@/components/ArticleCard';
 import HeroSection from '@/components/HeroSection';
 import NewsletterSignup from '@/components/NewsletterSignup';
-import { featuredArticle, recentArticles } from '@/lib/data';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ArticlesPage from './articles';
+import { usePosts } from '@/hooks/usePosts';
+import { BlogPost } from '@/types/general';
 
 export default function Home() {
+  const { data, isPending } = usePosts()
+  const featured = data ? data.items[0] : {} as BlogPost
   return (
     <div className="min-h-screen px-4 sm:px-6 lg:px-8 pb-16">
       <Header />
@@ -16,7 +21,8 @@ export default function Home() {
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="gap-12 items-center">
           <div>
-            <HeroSection article={featuredArticle} featured={true} />
+            {isPending ? <div className="bg-gray-200 rounded-2xl h-80 animate-pulse"></div> :
+            <HeroSection article={featured} featured={true} />}
           </div>
         </div>
       </section>
@@ -39,7 +45,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {recentArticles.map((article) => (
+          {data?.items?.slice(0, 1).map((article) => (
             <ArticleCard key={article.id} article={article} />
           ))}
         </div>

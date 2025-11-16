@@ -3,16 +3,17 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import ArticleCard from '@/components/ArticleCard';
 import CategoryFilter from '@/components/CategoryFilter';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { articles, categories } from '@/lib/data';
 import SpecialCard from '@/components/SpecialCard';
+import { usePosts } from '@/hooks/usePosts';
+import { BlogPost } from '@/types/general';
 
 export default function ArticlesPage() {
   const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState('Design');
+  const {data} = usePosts()
   
   useEffect(() => {
     const categoryParam = searchParams?.get('category');
@@ -21,9 +22,7 @@ export default function ArticlesPage() {
     }
   }, [searchParams]);
 
-  const filteredArticles = selectedCategory === 'All' 
-    ? articles 
-    : articles.filter(article => article.category === selectedCategory);
+  const filteredArticles = data?.items.filter((item: BlogPost) => item.categories.includes(selectedCategory))
 
   return (
     <div className=" mx-auto container min-h-screen">
@@ -43,12 +42,12 @@ export default function ArticlesPage() {
       {/* Articles Grid */}
       <section className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredArticles.map((article) => (
+          {filteredArticles?.map((article) => (
             <SpecialCard key={article.id} article={article} />
           ))}
         </div>
 
-        {filteredArticles.length === 0 && (
+        {filteredArticles?.length === 0 && (
           <div className="text-center py-16">
             <p className="text-gray-500 text-lg">No articles found in this category.</p>
           </div>

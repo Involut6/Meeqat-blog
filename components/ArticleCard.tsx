@@ -3,10 +3,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
-import type { Article } from '@/lib/data';
+import { BlogPost } from '@/types/general';
+import Hero from '@/app/assets/hero.svg'
 
 interface ArticleCardProps {
-  article: Article;
+  article: BlogPost;
   featured?: boolean;
 }
 
@@ -24,7 +25,7 @@ export default function ArticleCard({ article, featured = false }: ArticleCardPr
       <div className={cardClasses}>
         <div className="relative overflow-hidden">
           <Image
-            src={article.image}
+            src={Hero ?? Hero}
             alt={article.title}
             width={featured ? 600 : 400}
             height={featured ? 320 : 192}
@@ -32,19 +33,20 @@ export default function ArticleCard({ article, featured = false }: ArticleCardPr
           />
           <div className="absolute top-4 left-4">
             <span className="bg-[#FF9F43] text-white px-3 py-1 rounded-full text-sm font-medium">
-              {article.category}
+              {article.categories[0]}
             </span>
           </div>
-          {featured && article.readTime && (
+          {/* {featured && article.readTime && (
             <div className="absolute top-4 right-4">
               <span className="bg-white bg-opacity-90 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
                 {article.readTime}
               </span>
             </div>
-          )}
+          )} */}
         </div>
 
         <div className={featured ? "mt-6" : "p-6"}>
+          <div className='w-full'>
           <h3 className={`font-bold text-gray-900 mb-3 group-hover:text-[#FF9F43] transition-colors ${
             featured ? 'text-3xl leading-tight' : 'text-xl'
           }`}>
@@ -63,18 +65,23 @@ export default function ArticleCard({ article, featured = false }: ArticleCardPr
               <ArrowUpRight className="w-4 h-4 ml-1" />
             </div>
           )}
+          </div>
 
           <div className="flex items-center mt-16 space-x-3">
             <Image
-              src={article.author.avatar}
-              alt={article.author.name}
+              src={Hero ?? Hero}
+              alt="Image"
               width={40}
               height={40}
               className="rounded-full object-cover w-10 h-10"
             />
             <div>
-              <p className="font-medium text-gray-900">{article.author.name}</p>
-              <p className="text-sm text-gray-500">{article.author.date}</p>
+              <p className="font-medium text-gray-900">{article.author.firstName} {article.author.lastName}</p>
+              <p>{new Date(article.updatedAt).toLocaleDateString(undefined, {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+              })}</p>
             </div>
           </div>
         </div>

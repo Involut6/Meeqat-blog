@@ -111,17 +111,30 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 ];
 
 export const categories = [
-  "Design",
-  "Food", 
-  "Art",
   "Tech",
-  "Lifestyle",
-  "Islam",
-  "Sport",
-  "Marriage",
+  "Design",
+  "Art",
+  "Photography",
+  "Culture",
   "Books",
-  "Desig"
+  "Lifestyle",
+  "Fashion & Style",
+  "Health & Wellness",
+  "Fitness",
+  "Travel",
+  "Food",
+  "Cooking & Food",
+  "Parenting",
+  "Islam",
+  "Marriage",
+  "Business",
+  "Finance & Investing",
+  "Marketing",
+  "Sport",
+  "Politics",
+  "Education"
 ];
+
 
 export const featuredArticle = articles[0];
 export const recentArticles = articles.slice(1, 4);
